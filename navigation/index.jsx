@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Welcome } from '../screens/Welcome';
-import { Image } from 'react-native';
+import { Image, TouchableHighlight } from 'react-native';
 import Login from '../screens/Login';
 import Explore from '../screens/Explore';
 import Browse from '../screens/Browse';
@@ -15,9 +15,10 @@ const Stack = createStackNavigator();
 export default function MyStack() {
   return (
     <Stack.Navigator
+      initialRouteName="Login"
       screenOptions={defaultNavigationOptions}
     >
-      <Stack.Screen options={withoutHeader} name="Welcome" component={Welcome} />
+      <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />
       <Stack.Screen name="Explore" component={Explore} />
@@ -34,9 +35,16 @@ const defaultNavigationOptions = {
     backgroundColor: theme.colors.white,
     borderBottomColor: "transparent",
     elevation: 0, //android
-    shadowOffset: { height: 0, width: 0}
+    shadowOffset: { height: 0, width: 0 }
   },
-  headerBackImage: () => <Image source={require('../assets/icons/back.png')} />,
+  //headerBackImage: () => (<Image source={require('../assets/icons/back.png')} />),
+  headerLeft: ({ canGoBack, onPress }) => (
+    canGoBack && (
+      <TouchableHighlight onPress={onPress}>
+        <Image source={require('../assets/icons/back.png')} />
+      </TouchableHighlight>
+    )
+  ),
   title: null,
   headerBackTitleVisible: false,
   headerLeftContainerStyle: {
@@ -50,6 +58,5 @@ const defaultNavigationOptions = {
 
 const withoutHeader = {
   ...defaultNavigationOptions,
-  headerShown: false
-  //header: () => {}
+  //headerShown: false
 };
