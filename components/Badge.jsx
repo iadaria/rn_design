@@ -1,0 +1,43 @@
+import React, { Component } from "react";
+import { StyleSheet } from "react-native";
+
+
+import { theme } from "../constants";
+import { Block } from "./Block";
+
+export function Badge(props)  {
+
+    const { children, style, size, color, ...otherProps } = props;
+
+    const badgeStyles = StyleSheet.flatten([
+        styles.badge,
+        size && {
+            height: size,
+            width: size,
+            borderRadius: size
+        },
+        style
+    ]);
+
+    return (
+        <Block
+            flex={false}
+            middle
+            center
+            color={color}
+            style={badgeStyles}
+            {...otherProps}
+        >
+            {children}
+        </Block>
+    );
+}
+
+
+const styles = StyleSheet.create({
+    badge: {
+        height: theme.sizes.base,
+        width: theme.sizes.base,
+        borderRadius: theme.sizes.border
+    }
+});
