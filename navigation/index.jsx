@@ -15,14 +15,22 @@ const Stack = createStackNavigator();
 export default function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Login"
+      initialRouteName="Browse"
       screenOptions={defaultNavigationOptions}
     >
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />
       <Stack.Screen name="Explore" component={Explore} />
-      <Stack.Screen name="Browse" component={Browse} />
+      <Stack.Screen 
+        name="Browse" 
+        component={Browse} 
+        /* initialParams={{ 
+          profile: { 
+            avatar: require('../assets/images/avatar.png')
+          }
+        }} */
+      />
       <Stack.Screen name="Product" component={Product} />
       <Stack.Screen name="Settings" component={Settings} />
     </Stack.Navigator>
