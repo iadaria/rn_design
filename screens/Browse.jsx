@@ -6,8 +6,19 @@ import { categories } from '../constants/mocks';
 
 export default function Browse({ navigation, ...props }) {
     const [active, setActive] = useState("Products");
+    const [categories, setCategories] = useState(props.categories);
     const { profile } = props;
     const tabs = ['Products', 'Inspirations', 'Shop'];
+
+    function handleTab(tab) {
+        const { categories: AllCategories } = props;
+        const filtered = AllCategories.filter(
+            category => category.tags.includes(tab.toLowerCase())
+        );
+
+        setActive(tab);
+        setCategories(filtered);
+    }
 
     function renderTab(tab) {
         const isActive = active === tab;
@@ -15,7 +26,7 @@ export default function Browse({ navigation, ...props }) {
         return (
             <TouchableOpacity
                 key={`tab-${tab}`}
-                onPress={() => setActive(tab)}
+                onPress={() => handleTab(tab)}
                 style={[
                     styles.tab,
                     isActive ? styles.active : null
