@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react'
 import { Dimensions, StyleSheet, Image, Animated, ScrollView, TouchableOpacity } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
-import { AppText, Block, Button, Input } from '../components'
-import { mocks, theme } from '../constants'
+import { AppText, Block, Button, Input } from '../components';
+import { mocks, theme } from '../constants';
 //mport { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
-
 
 const { width, height } = Dimensions.get('window');
 

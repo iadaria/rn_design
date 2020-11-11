@@ -9,6 +9,8 @@ import Product from '../screens/Product';
 import Settings from '../screens/Settings';
 import Signup from '../screens/Signup';
 import { theme } from '../constants';
+import { AppText, Button } from '../components';
+import { Entypo } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
@@ -23,13 +25,13 @@ export default function MyStack() {
       <Stack.Screen name="Signup" component={Signup} />
       <Stack.Screen name="Explore" component={Explore} />
       <Stack.Screen name="Browse" component={Browse} />
-      <Stack.Screen name="Product" component={Product} />
+      <Stack.Screen options={withRightHeader} name="Product" component={Product} />
       <Stack.Screen name="Settings" component={Settings} />
     </Stack.Navigator>
   );
 }
 
-const defaultNavigationOptions = {
+const defaultNavigationOptions = {//({ route, navigation}) => ({
   headerStyle: {
     height: theme.sizes.base * 5,
     //borderWidth: 1, borderColor: 'red',
@@ -41,7 +43,7 @@ const defaultNavigationOptions = {
   //headerBackImage: () => (<Image source={require('../assets/icons/back.png')} />),
   headerLeft: ({ canGoBack, onPress }) => (
     canGoBack && (
-      <TouchableHighlight onPress={onPress} style={{ borderWidth: 1, borderColor: 'green'}}>
+      <TouchableHighlight onPress={onPress} /* style={{ borderWidth: 1, borderColor: 'green' }} */>
         <Image source={require('../assets/icons/back.png')} />
       </TouchableHighlight>
     )
@@ -56,6 +58,18 @@ const defaultNavigationOptions = {
   },
   headerRightContainerStyle: {},
 };
+
+const withRightHeader = ({rote, navigation}) => ({
+  ...defaultNavigationOptions,
+  headerRight: () => (
+    <Button 
+      style={{ marginRight: theme.sizes.base * 2, marginTop: theme.sizes.base * 4.5}}
+      onPress={() => navigation.navigate('Login')}
+    >
+      <Entypo name="dots-three-horizontal" color={theme.colors.gray}/>
+    </Button>
+  ),
+});
 
 const withoutHeader = {
   ...defaultNavigationOptions,
