@@ -25,6 +25,9 @@ export function SwitchInput(props) {
           true: theme.colors.secondary
         }}
         value={value}
+        style={{ 
+          transform: [{ scaleX: .8}, {scaleY: .8}],
+        }}
         {...otherProps}
       />
     );
