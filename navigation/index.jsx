@@ -17,7 +17,7 @@ const Stack = createStackNavigator();
 export default function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Explore"
+      //initialRouteName="Explore"
       screenOptions={defaultNavigationOptions}
     >
       <Stack.Screen name="Welcome" component={Welcome} />

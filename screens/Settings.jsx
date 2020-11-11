@@ -15,7 +15,7 @@ export default function Settings({ navigation, ...props }) {
     const { profile } = props;
 
     return (
-        <Block>
+        <Block style={styles.root}>
             <Block flex={false} center space="between" row style={styles.header}>
                 <AppText h1>Settings</AppText>
                 <Button
@@ -131,6 +131,9 @@ Settings.defaultProps = {
 };
 
 const styles = StyleSheet.create({
+    root: {
+        paddingVertical: theme.sizes.base * 2,
+    },
     header: {
         paddingHorizontal: theme.sizes.base * 2
     },

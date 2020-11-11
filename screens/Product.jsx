@@ -15,7 +15,7 @@ function Gallery({ product }) {
             showsHorizontalScrollIndicator={false}
             snapToAlignment="center"
             data={product.images}
-            keyExtractor={(item, index) => `${item}`}
+            keyExtractor={(item, index) => `${index}`}
             renderItem={({item}) => (
                 <Image source={item} resizeMode="contain" style={{ width, height: height / 2.8}}/>
             )}

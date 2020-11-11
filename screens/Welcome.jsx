@@ -40,7 +40,7 @@ export function Welcome({ navigation }) {
         onScroll={
           Animated.event(
             [{ nativeEvent: { contentOffset: { x: scrollX }} }],
-            //{useNativeDriver: true}
+            {useNativeDriver: false}
           )
         }
       />
