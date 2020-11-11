@@ -40,9 +40,9 @@ export default function Browse({ navigation, ...props }) {
     }
 
     return (
-        <Block padding={[theme.sizes.base, theme.sizes.base * 2]}>
-            <Block flex={false} center space="between" row>
-                <AppText h1 bold>Browse</AppText>
+        <Block style={styles.root}>
+            <Block flex={false} center space="between" row style={styles.header}>
+                <AppText h1>Browse</AppText>
                 <Button
                     onPress={() => navigation.navigate('Settings')}
                 >
@@ -94,8 +94,12 @@ Browse.defaultProps = {
 };
 
 const styles = StyleSheet.create({
-    header: {
+    root: {
+        paddingVertical: theme.sizes.base,
         paddingHorizontal: theme.sizes.base * 2
+    },
+    header: {
+        paddingVertical: theme.sizes.base * 2
     },
     avatar: {
         height: theme.sizes.base * 2.2,
@@ -105,7 +109,7 @@ const styles = StyleSheet.create({
         borderBottomColor: theme.colors.gray2,
         borderBottomWidth: StyleSheet.hairlineWidth,
         marginVertical: theme.sizes.base,
-        marginHorizontal: theme.sizes.base * 2
+        //marginHorizontal: theme.sizes.base * 2
     },
     tab: {
         marginRight: theme.sizes.base * 2,

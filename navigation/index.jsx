@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 export default function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Browse"
+      initialRouteName="Explore"
       screenOptions={defaultNavigationOptions}
     >
       <Stack.Screen name="Welcome" component={Welcome} />
@@ -31,7 +31,8 @@ export default function MyStack() {
 
 const defaultNavigationOptions = {
   headerStyle: {
-    height: theme.sizes.base * 4,
+    height: theme.sizes.base * 5,
+    //borderWidth: 1, borderColor: 'red',
     backgroundColor: theme.colors.white,
     borderBottomColor: "transparent",
     elevation: 0, //android
@@ -40,7 +41,7 @@ const defaultNavigationOptions = {
   //headerBackImage: () => (<Image source={require('../assets/icons/back.png')} />),
   headerLeft: ({ canGoBack, onPress }) => (
     canGoBack && (
-      <TouchableHighlight onPress={onPress}>
+      <TouchableHighlight onPress={onPress} style={{ borderWidth: 1, borderColor: 'green'}}>
         <Image source={require('../assets/icons/back.png')} />
       </TouchableHighlight>
     )
